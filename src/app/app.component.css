@@ -1,0 +1,23 @@
+
+
+.div, div {
+    font-size: 1.75rem;
+    background-color: teal;
+}
+.sizeChange{
+	width: 50%;
+}
+.imgCountwidth{
+	width: 50%;
+	margin-top: 20px;
+}
+body {
+	font-family: serif;
+    color: white;
+  }
+  .container {
+  	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  }
+

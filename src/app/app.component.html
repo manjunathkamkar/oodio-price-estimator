@@ -1,0 +1,52 @@
+<body >
+  <div class="container" ><br>
+    <h3 align="center">Price Estimator</h3><br>
+    <div class="row">
+        <div class="col-md-4 ">
+           <h3  >Select Catagory :</h3>
+        </div>
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary sizeChange" (click)='bookSelection(1)'>Signature Series</button>
+        </div>
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-warning sizeChange " (click)='bookSelection(0)'>Lite Books</button>
+        </div><br><br>
+      <div class="col-md-12">
+        <h3 align="center" >Select Number of Images :</h3>
+      </div><br><br>
+        <div class="col-md-6">
+          <input type="text" class="form-control imgCountwidth" name="imageVal" id="sliderVal" ngModel=[from]  value={{sliderVal}} > 
+        </div><br><br>
+        <div class="col-md-6">
+          <ion-range-slider #sliderElement type="single" ngModel="value"  [min]="1"  [max]="1000"
+          prefix="Images: "  [step] = "1"  [hide_min_max] = "true" class="imgCountwidth" [from]="0" (onChange)="myOnChange($event)"></ion-range-slider> 
+        </div><br><br>
+        <div class="col-md-6" *ngIf="signature">
+          <h4>Select Type of book :</h4>
+        </div>
+        <div class="col-md-6"*ngIf="signature" >
+          <select class="form-control" #mySelect (change)='onOptionsSelected(mySelect.value)'>
+            <option selected>select book type</option>
+            <option *ngFor="let bookType of bookTypes" [value]="bookType.bookType">{{bookType.bookType}}</option>
+          </select>
+        </div><br><br>
+        <div class="col-md-6" *ngIf="signature"><h4>Select Book Size :</h4></div>
+        <div class="col-md-6" *ngIf="signature">
+          <select class="form-control" #mySelectedSize (change)='onSizeSelected(mySelectedSize.value)'>
+            <option selected>select size</option>
+            <option *ngFor="let bookSize of sizeSelection" [value]="bookSize.size">{{bookSize.size}}</option>
+        </select>
+        </div>
+        <div class="col-md-6" *ngIf="!signature"><h4>Select Book Size :</h4></div>
+        <div class="col-md-6" *ngIf="!signature">
+          <select class="form-control" #mySelectedSize (change)='onSizeSelected(mySelectedSize.value)'>
+            <option selected>select size</option>
+            <option *ngFor="let bookSize of liteBookSize" [value]="bookSize.size">{{bookSize.size}}</option>
+        </select>
+        </div><br><br>
+        <div class="col-md-12">
+        <h2 align="center" >Estimated price(including 5% GST): {{ finalCost | currency:'&#8377;' }}</h2>
+      </div>
+    </div>
+  </div>
+</body>
